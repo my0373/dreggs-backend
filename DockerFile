@@ -1,0 +1,17 @@
+# Pick the python version
+FROM python:3.12
+
+# Create a working directory in the container
+WORKDIR /dreggs-backend
+
+# Copy over the Python dependency list.
+COPY requirements.txt .
+
+# Install the dependencies into the container
+RUN pip install -r requirements.txt
+
+# Copy over the code from the local app directory
+COPY ./app ./app
+
+# Run the main.py python script.
+CMD["python", "./app/main.py"]
